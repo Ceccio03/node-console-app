@@ -8,9 +8,9 @@ const outputUrl = process.argv[3];
 let data = readFile(inputUrl)
 
 if (data) {
-    data += '\npippo,pluto,paperino';
+    const result = transformData(data);
 
-    writeData(outputUrl, data);
+    writeData(outputUrl, result);
 }
 
 function readFile(url) {
@@ -32,7 +32,11 @@ function writeData(url,data) {
 }
 
 function transformData(data) {
-    const rows = data.split('\n');
+    const rows = data.split(/\r?\n/);
+
+    // 1) creare una costante 'header' con la prima riga che AVRETE TOLTO a rows
+    // 2) creare una costante 'headerArray' splittando la stringa header sulle virgole
+    // 3) ciclare sull'array rows
 
     return JSON.stringify(rows);
 }
