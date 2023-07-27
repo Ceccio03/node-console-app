@@ -2,12 +2,15 @@ console.log('viva Node!!!');
 
 const fs = require('fs');
 
+console.log(process.argv[2]);
+console.log(process.argv[3]);
+
 let data = readFile("./input/student.csv")
 
 if (data) {
     data += '\npippo,pluto,paperino';
 
-    writeData();
+    writeData("./output/joke2.csv", data);
 }
 
 function readFile(url) {
