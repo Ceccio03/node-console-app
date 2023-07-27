@@ -40,6 +40,11 @@ function transformData(data) {
     // 4) ciclare sull'array rows
         // 4a) creare una costante rowArray splittando la singola row sulle virgole
         // 4b) creare un oggetto vuoto chiamato student
+        // 4c) ciclare sull'headerArray
+            // 4c1) per ogni elemento dell'headerArray aggiungere una proprietà all'oggetto student
+                // student[headerArray[j]] = rowArray[j]
+        // 4d) aggiungere student a students
+    // 5) ritornare JSON.stringify di students
 
     return JSON.stringify(rows);
 }
