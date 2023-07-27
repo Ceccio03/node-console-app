@@ -30,3 +30,9 @@ function writeData(url,data) {
         console.error(err.message);
     }
 }
+
+function transformData(data) {
+    const rows = data.split('\n');
+
+    return JSON.stringify(rows);
+}
