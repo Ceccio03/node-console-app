@@ -46,5 +46,9 @@ function transformData(data) {
         // 4d) aggiungere student a students
     // 5) ritornare JSON.stringify di students
 
+    // A1) tipizzare i valori nel json
+    // A2) aggiungere un parametro all'applicazione che mi permette di indicare il carattere diviso
+    // A3) gestire la possibilità che nel csv ci siano degli spazi non voluti
+
     return JSON.stringify(rows);
 }
