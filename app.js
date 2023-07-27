@@ -36,7 +36,10 @@ function transformData(data) {
 
     // 1) creare una costante 'header' con la prima riga che AVRETE TOLTO a rows
     // 2) creare una costante 'headerArray' splittando la stringa header sulle virgole
-    // 3) ciclare sull'array rows
+    // 3) creare un array chiamato students (vuoto)
+    // 4) ciclare sull'array rows
+        // 4a) creare una costante rowArray splittando la singola row sulle virgole
+        // 4b) creare un oggetto vuoto chiamato student
 
     return JSON.stringify(rows);
 }
