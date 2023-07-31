@@ -63,10 +63,11 @@ function transformData(data) {
         for (let j = 0; j < headerArray.length; j++) {
             const key = headerArray[j];
             console.log(key);
-        
+            const value = rowArray[j];
+            const trimmedValue = value.trim();
             // 4c1) per ogni elemento dell'headerArray aggiungere una proprietà all'oggetto student
                 // student[headerArray[j]] = rowArray[j]
-            element[key] = rowArray[j];
+            element[key] = trimmedValue;  // A3) gestire la possibilità che nel csv ci siano degli spazi non voluti
             console.log(element);
         }
         // 4d) aggiungere student a students
@@ -77,8 +78,8 @@ function transformData(data) {
     return JSON.stringify(elements, null, 4);
 
     // A1) tipizzare i valori nel json
-    // A2) aggiungere un parametro all'applicazione che mi permette di indicare il carattere diviso
-    // A3) gestire la possibilità che nel csv ci siano degli spazi non voluti
+    // A2) aggiungere un parametro all'applicazione che mi permette di indicare il carattere divisorio
+    
 
     // return JSON.stringify(rows, null, 4);
 }
