@@ -1,8 +1,26 @@
 console.log('viva Node!!!');
 
 const fs = require("fs");
-const transformCsvToJson = require('./json-converter');
+// const transformCsvToJson = require('./json-converter');
+// const transformJsonToCsv = require('./csv-converter');
+// const jsonConverter = require('./json-converter');
+// console.log(jsonConverter);
+
 const inputUrl = process.argv[2];
+const splittedInputUrl = inputUrl.split('.');
+const ext = splittedInputUrl[splittedInputUrl.length - 1];
+
+let transformFunction;
+
+if (ext.toLocaleLowerCase().includes('json')) {
+    transformFunction = require('./csv-converter');
+} else if (ext.toLocaleLowerCase().includes('csv')) {
+    transformFunction = require('./json-converter');
+} else {
+    console.log('non posso convertire i file: ' + ext);
+    process.exit();
+}
+
 const outputUrl = process.argv[3];
 let divider = process.argv[4];  // A2) aggiungere un parametro all'applicazione che mi permette di indicare il carattere divisorio
 
@@ -14,7 +32,7 @@ console.log(divider);
 let data = readFile(inputUrl)
 
 if (data) {
-    const result = transformCsvToJson(data, divider);
+    const result = transformFunction(data, divider);
 
     writeData(outputUrl, result);
 }
