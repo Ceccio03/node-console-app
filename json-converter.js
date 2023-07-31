@@ -71,4 +71,4 @@ function tryParse(str) {
 }
 
 // exports = {tranform: transformFromCsvToJson, parse: tryParse};
-module.exports = transformFromCsvToJson;
+module.exports = transformFromCsvToJson; 
