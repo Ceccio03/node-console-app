@@ -1,43 +1,4 @@
-console.log('viva Node!!!');
-
-const fs = require("fs");
-const transformCsvToJson = require('./json-converter');
-const inputUrl = process.argv[2];
-const outputUrl = process.argv[3];
-let divider = process.argv[4];  // A2) aggiungere un parametro all'applicazione che mi permette di indicare il carattere divisorio
-
-if (divider === undefined) {
-    divider = ',';
-}
-console.log(divider);
-
-let data = readFile(inputUrl)
-
-if (data) {
-    const result = transformCsvToJson(data, divider);
-
-    writeData(outputUrl, result);
-}
-
-function readFile(url) {
-    try {
-        const data = fs.readFileSync(url, "utf8");
-        return data;
-    } catch (err) {
-        console.error(err);
-        return null;
-    }
-}
-
-function writeData(url,data) {
-    try {
-        fs.writeFileSync(url, data);
-    } catch (err) {
-        console.error(err.message);
-    }
-}
-
-function transformData(data) {
+function transformFromCsvToJson(data, divider) {
     const rows = data.split(/\r?\n/);
 
     // 1) creare una costante 'header' con la prima riga che AVRETE TOLTO a rows
@@ -108,3 +69,6 @@ function tryParse(str) {
         return number;
     }
 }
+
+// exports = {tranform: transformFromCsvToJson, parse: tryParse};
+module.exports = transformFromCsvToJson;
